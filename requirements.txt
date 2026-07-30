@@ -1,0 +1,65 @@
+# WordPress Red Team - Requirements
+# Python 3.8+ required
+
+# Core HTTP/S requests
+requests>=2.31.0
+urllib3>=2.0.0
+
+# Web scraping and parsing
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+html5lib>=1.1
+
+# Colored console output
+colorama>=0.4.6
+
+# Data validation and parsing
+certifi>=2023.0.0
+charset-normalizer>=3.0.0
+idna>=3.4.0
+
+# Async/concurrent processing (already in Python standard library)
+# concurrent.futures (built-in)
+
+# Optional dependencies for enhanced scanning
+cryptography>=39.0.0  # For SSL/TLS handling
+PySocks>=1.7.1  # SOCKS proxy support
+python-dotenv>=1.0.0  # Environment variable management
+tldextract>=3.4.0  # Domain parsing
+
+# For advanced regex and parsing
+regex>=2023.0.0
+
+# For JSON handling (built-in)
+# json (built-in)
+
+# For datetime handling (built-in)
+# datetime (built-in)
+
+# For hashing (built-in)
+# hashlib (built-in)
+
+# For socket operations (built-in)
+# socket (built-in)
+
+# For SSL/TLS (built-in)
+# ssl (built-in)
+
+# For threading (built-in)
+# threading (built-in)
+
+# For signal handling (built-in)
+# signal (built-in)
+
+# For base64 encoding (built-in)
+# base64 (built-in)
+
+# For random operations (built-in)
+# random (built-in)
+
+# For system operations (built-in)
+# sys, os (built-in)
+
+# For debugging
+# pdb (built-in)
+# traceback (built-in)
