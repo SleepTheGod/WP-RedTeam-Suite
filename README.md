@@ -353,4 +353,287 @@ If you find this tool useful, please consider giving it a ⭐ on [GitHub](https:
 
 ---
 
+# WP-RedTeam-Suite - One-Liner Commands
+
+## 🚀 Basic Commands
+
+### Simple Scan
+```bash
+python3 wp_redteam.py -u https://example.com
+```
+
+### HTTP Without SSL
+```bash
+python3 wp_redteam.py -u http://example.com
+```
+
+### With Custom Threads (Faster)
+```bash
+python3 wp_redteam.py -u https://example.com -t 50
+```
+
+### With Longer Timeout
+```bash
+python3 wp_redteam.py -u https://example.com -T 10
+```
+
+---
+
+## 🔐 Authentication & Cookies
+
+### With Cookies
+```bash
+python3 wp_redteam.py -u https://example.com -c "wordpress_logged_in=hashvalue; wp-settings-time=1"
+```
+
+### With Multiple Cookies
+```bash
+python3 wp_redteam.py -u https://example.com -c "auth=token123; session=abc456; user=admin"
+```
+
+---
+
+## 🌐 Proxy & Network
+
+### Through HTTP Proxy
+```bash
+python3 wp_redteam.py -u https://example.com -p http://127.0.0.1:8080
+```
+
+### Through SOCKS Proxy
+```bash
+python3 wp_redteam.py -u https://example.com -p socks5://127.0.0.1:9050
+```
+
+### With Custom User-Agent
+```bash
+python3 wp_redteam.py -u https://example.com -a "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+```
+
+### Disable SSL Verification
+```bash
+python3 wp_redteam.py -u https://example.com --no-ssl-verify
+```
+
+---
+
+## ⚡ Advanced Scans
+
+### Aggressive Scan (Maximum Threads)
+```bash
+python3 wp_redteam.py -u https://example.com -t 100 -T 3
+```
+
+### Stealth Scan (Low Threads)
+```bash
+python3 wp_redteam.py -u https://example.com -t 5 -T 15
+```
+
+### Full Options Scan
+```bash
+python3 wp_redteam.py -u https://example.com -t 50 -T 10 -c "cookie=value" -p http://127.0.0.1:8080 -a "CustomUserAgent/1.0" --no-ssl-verify
+```
+
+---
+
+## 🎯 Specific Target Types
+
+### WordPress Multisite
+```bash
+python3 wp_redteam.py -u https://example.com -c "wp_mu_logged_in=hash"
+```
+
+### Local Development
+```bash
+python3 wp_redteam.py -u http://localhost/wordpress -t 20
+```
+
+### IP Address Target
+```bash
+python3 wp_redteam.py -u http://192.168.1.100/wordpress
+```
+
+### Port Specific
+```bash
+python3 wp_redteam.py -u http://192.168.1.100:8080
+```
+
+---
+
+## 📊 Output & Reporting
+
+### Save to JSON
+```bash
+python3 wp_redteam.py -u https://example.com && ls wp_scan_*.json
+```
+
+### Quick Scan + Output
+```bash
+python3 wp_redteam.py -u https://example.com -t 100 | tee scan_output.txt
+```
+
+### Verbose Output with Colors
+```bash
+python3 wp_redteam.py -u https://example.com 2>&1 | grep -E "(FOUND|VULN|BACKDOOR|CREDENTIALS)"
+```
+
+---
+
+## 🎮 CTF & Competition Commands
+
+### Quick CTF Scan
+```bash
+python3 wp_redteam.py -u http://target.ctf.com -t 30
+```
+
+### Aggressive CTF Scan
+```bash
+python3 wp_redteam.py -u http://target.ctf.com -t 100 -T 3 --no-ssl-verify
+```
+
+### With Provided Credentials
+```bash
+python3 wp_redteam.py -u http://target.ctf.com -c "wordpress_logged_in=1234567890abcdef"
+```
+
+---
+
+## 🔍 Specific Vulnerability Checks
+
+### Check for Backdoors Only
+```bash
+python3 wp_redteam.py -u https://example.com -t 50 2>&1 | grep -A 5 -B 5 "BACKDOOR"
+```
+
+### Check SQL Injection
+```bash
+python3 wp_redteam.py -u https://example.com -t 50 2>&1 | grep -A 3 -B 3 "SQL injection"
+```
+
+### Check XSS Vulnerabilities
+```bash
+python3 wp_redteam.py -u https://example.com -t 50 2>&1 | grep -A 3 -B 3 "XSS"
+```
+
+### Check for Credentials
+```bash
+python3 wp_redteam.py -u https://example.com -t 50 2>&1 | grep -A 5 -B 5 "CREDENTIALS"
+```
+
+---
+
+## 🌐 External Tools Integration
+
+### With Nmap First
+```bash
+nmap -p80,443 example.com && python3 wp_redteam.py -u https://example.com
+```
+
+### With GoBuster Then Scan
+```bash
+gobuster dir -u https://example.com -w /usr/share/wordlists/dirb/common.txt -x php && python3 wp_redteam.py -u https://example.com
+```
+
+### With WhatWeb Then Scan
+```bash
+whatweb https://example.com && python3 wp_redteam.py -u https://example.com
+```
+
+---
+
+## 🐍 Python One-Liners
+
+### Import and Run Programmatically
+```python
+python3 -c "from wp_redteam import WordPressRedTeam; scanner = WordPressRedTeam('https://example.com'); scanner.run_full_scan()"
+```
+
+### With Custom Parameters
+```python
+python3 -c "from wp_redteam import WordPressRedTeam; scanner = WordPressRedTeam('https://example.com', threads=50, timeout=10); scanner.run_full_scan()"
+```
+
+---
+
+## 📦 Docker Commands
+
+### Run in Docker
+```bash
+docker run -it --rm python:3.9 bash -c "git clone https://github.com/SleepTheGod/WP-RedTeam-Suite && cd WP-RedTeam-Suite && pip install -r requirements.txt && python3 wp_redteam.py -u https://example.com"
+```
+
+---
+
+## 🔧 Troubleshooting Commands
+
+### Test Connectivity First
+```bash
+curl -I https://example.com && python3 wp_redteam.py -u https://example.com
+```
+
+### Use with Verbose Python
+```bash
+python3 -v wp_redteam.py -u https://example.com -t 10
+```
+
+### Debug Mode
+```bash
+python3 wp_redteam.py -u https://example.com --no-ssl-verify 2>&1 | tee debug.log
+```
+
+---
+
+## 🏆 Quick Reference Card
+
+```bash
+# Basic Scans
+python3 wp_redteam.py -u https://example.com                              # Standard scan
+python3 wp_redteam.py -u https://example.com -t 50                        # Fast scan
+python3 wp_redteam.py -u https://example.com -T 15                        # Slow stealthy scan
+
+# Network Options
+python3 wp_redteam.py -u https://example.com -p http://127.0.0.1:8080   # Through proxy
+python3 wp_redteam.py -u https://example.com --no-ssl-verify             # Skip SSL
+
+# With Authentication
+python3 wp_redteam.py -u https://example.com -c "cookie1=value1; cookie2=value2"
+
+# Full Power
+python3 wp_redteam.py -u https://example.com -t 100 -T 3 -c "auth=token" -p http://127.0.0.1:8080 --no-ssl-verify
+```
+
+---
+
+## 💡 Pro Tips
+
+1. **Speed vs Stealth**: Use `-t 100` for speed, `-t 5` for stealth
+2. **Timeouts**: Use `-T 3` for fast networks, `-T 15` for slow networks
+3. **Cookies**: Always use cookies if you have them - they bypass some restrictions
+4. **Proxy**: Use Burp Suite or OWASP ZAP to intercept and analyze requests
+5. **SSL**: Use `--no-ssl-verify` for self-signed or internal certificates
+6. **Output**: Save results with `>` or `tee` for later analysis
+7. **JSON Reports**: Check for `wp_scan_*.json` files after scan
+
+---
+
+## 🚨 Quick CTF Cheat Sheet
+
+```bash
+# CTF 1 - Basic
+python3 wp_redteam.py -u http://ctf.challenge.com
+
+# CTF 2 - With Cookies
+python3 wp_redteam.py -u http://ctf.challenge.com -c "PHPSESSID=abc123"
+
+# CTF 3 - Fast Scan
+python3 wp_redteam.py -u http://ctf.challenge.com -t 100 --no-ssl-verify
+
+# CTF 4 - Full Enumeration
+python3 wp_redteam.py -u http://ctf.challenge.com -t 50 -T 5 -c "auth=token123" --no-ssl-verify
+```
+
+---
+
+**Happy Hacking! 🚀**
+
 **Built with ❤️ by SleepTheGod**
