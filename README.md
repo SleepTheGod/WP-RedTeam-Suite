@@ -46,6 +46,34 @@ pip install -r requirements.txt
 pip install requests beautifulsoup4 urllib3 colorama
 ```
 
+# Run Updated Version
+```bash
+git clone https://github.com/SleepTheGod/WP-RedTeam-Suite.git
+cd WP-RedTeam-Suite
+pip install -r requirements.txt --break-system-packages
+pip install requests beautifulsoup4 urllib3 colorama --break-system-packages
+chmod +x update.py
+./wp_redteam.py -u example.com
+```
+
+## 📦 Installation
+
+### Clone the Repository
+```bash
+git clone https://github.com/SleepTheGod/WP-RedTeam-Suite.git
+cd WP-RedTeam-Suite
+```
+
+### Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### Manual Installation
+```bash
+pip install requests beautifulsoup4 urllib3 colorama
+```
+
 ---
 
 ## 🛠️ Requirements
